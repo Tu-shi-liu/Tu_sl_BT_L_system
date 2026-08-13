@@ -114,7 +114,7 @@ void RGB_BreathTask(void)
     static uint8_t index = 0;
     uint8_t brightness = breath_table[index];
     RGB_SetColor(brightness, brightness, brightness);
-    index += 2; 
+    index += 1; 
     if (index >= 128) {
         index = 0;
     }

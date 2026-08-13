@@ -72,7 +72,7 @@ static const uint8_t static_colors[4][3] = {
 
 /* USER CODE BEGIN PV */
 
-static uint8_t sys_mode    = MODE_TEMP;
+static uint8_t sys_mode    = MODE_RAINBOW;
 static uint8_t static_r = 0, static_g = 188, static_b = 199;
 static uint8_t color_idx   = 0;
 static uint8_t led_enable  = 1;
@@ -86,7 +86,7 @@ static uint32_t last_led_update     = 0;
 static uint32_t last_bt_send        = 0;
 
 /* 刷新节流 */
-static int16_t  last_temp10  = -300;   // 不可能的值
+static int16_t  last_temp10  = -300; 
 static uint16_t last_press10 = 0;
 static uint16_t last_lux10   = 65535;
 static int last_bt_conn = -1;   // -1 表示未知，0=未连接，1=已连接
@@ -273,8 +273,8 @@ int main(void)
           HC05_SendString(msg);
       }
 
-      /* 动态灯光效果 (20ms) */
-      if (HAL_GetTick() - last_led_update >= 20) {
+      /* 动态灯光效果 (30ms) */
+      if (HAL_GetTick() - last_led_update >= 30) {
           last_led_update = HAL_GetTick();
           if (led_enable) {
               switch (sys_mode) {

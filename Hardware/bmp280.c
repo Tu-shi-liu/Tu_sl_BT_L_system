@@ -179,7 +179,8 @@ void BMP280_Task(void) {
 }
 
 uint8_t BMP280_GetData(int16_t *temp, uint16_t *press) {
-    if (!data_buffer.ready) return 0;
+    if (temp == NULL || press == NULL) return 0;  
+	if (!data_buffer.ready) return 0;
     *temp = data_buffer.temperature;
     *press = data_buffer.pressure;
     data_buffer.ready = 0;

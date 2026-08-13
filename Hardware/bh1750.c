@@ -47,7 +47,8 @@ void BH1750_Init(void) {
 }
 
 uint8_t BH1750_GetLux(uint16_t *lux) {
-    if (data.ready == 0) return 0;
+    if (lux == NULL) return 0;  
+	if (data.ready == 0) return 0;
     *lux = data.lux_raw;
     data.ready = 0;
     bh1750_data.ready = 0;
